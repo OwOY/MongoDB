@@ -11,7 +11,7 @@ collection = db.All
 #     'datetime':'2019-01-06'
 # }
 
-# result = db.eprice.insert_one(DB_dict)
+# result = collection.insert_one(DB_dict)
 # --------------------------輸入多筆資料-----------------------------
 # a = [1,2,3,4]
 # b = [2,4,5,6]
@@ -19,7 +19,7 @@ collection = db.All
 #     {'title': c,'text': d,'test':'test'} for c,d in zip(a,b)
 # ]
 
-# result = db.eprice.insert_many(DB_dict)
+# result = collection.insert_many(DB_dict)
 # -------------------------------------------------------------------
 
 
