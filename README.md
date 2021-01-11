@@ -6,7 +6,7 @@ collection.insert({'time_decline':datetime.datetime.utcnow()})
 collection.create_index([("time_decline", pymongo.ASCENDING)], expireAfterSeconds=43200)   
   
 
-## 連接MongoDB(雲端)  
+## 連接MongoDB   
 client = pymongo.MongoClient(f'{IP}')  
 collection = client[f'{db}'][f'{collection}']  
 
