@@ -1,5 +1,5 @@
 # MongoDB
-紀錄MongoDB的使用方式
+<img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Mongodb.png/1200px-Mongodb.png"></img>
 ## 時間戳記  自動刪除collection  
 
 collection.insert({'time_decline':datetime.datetime.utcnow()})  
