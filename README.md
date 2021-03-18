@@ -46,7 +46,7 @@ print(data)
 
 ## --------------------------尋找Column-----------------------------
 ```
-finddata = collection.find({}, {_id:0})    0為顯示   1為不顯示
+finddata = collection.find({}, {_id:0})    0為不顯示   1為顯示
 data = [data for data in finddata]
 for d in data:
     print(d)
