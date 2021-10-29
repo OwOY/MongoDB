@@ -1,15 +1,15 @@
 # MongoDB
 <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Mongodb.png/1200px-Mongodb.png"></img>
 ## 時間戳記  自動刪除collection  
-
+```
 collection.insert({'time_decline':datetime.datetime.utcnow()})  
 collection.create_index([("time_decline", pymongo.ASCENDING)], expireAfterSeconds=43200)   
-  
-
+```
 ## 連接MongoDB   
+```
 client = pymongo.MongoClient(f'{IP}')  
 collection = client[f'{db}'][f'{collection}']  
-
+```
 ## --------------------------輸入單筆資料-----------------------------
 ```
 DB_dict = {
@@ -53,9 +53,14 @@ for d in data:
 ```
 
 ## ----------------------------刪除一筆資料-------------------------
-- mvone = collection.delete_one({'title':'yaya'})
+```
+mvone = collection.delete_one({'title':'yaya'})
+```
 ## ----------------------------刪除多筆資料-------------------------
-- mvmany = collection.delete_many({'title':'haha'})
+```
+mvmany = collection.delete_many({'title':'haha'})
+```
 ## ----------------------------刪除全部資料-------------------------
-- mvall = collection.delete_many({})
-## ----------------------------------------------------------------
+```
+mvall = collection.delete_many({})
+```
