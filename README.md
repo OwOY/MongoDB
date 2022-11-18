@@ -64,3 +64,18 @@ mvmany = collection.delete_many({'title':'haha'})
 ```
 mvall = collection.delete_many({})
 ```
+
+## ----------------------------修改一筆資料-------------------------
+```
+collection.update_one(key, {'$set':{'text':'tetttst'}})
+mvone = collection.update_one({'title':'yaya'}, {'$set':{'text':'tetttst'}})
+```
+
+## ----------------------------修改全部資料-------------------------
+- 修改address為S開頭資料
+```
+myquery = { "address": { "$regex": "^S" } }
+newvalues = { "$set": { "name": "Minnie" } }
+
+x = collection.update_many(myquery, newvalues)
+```
