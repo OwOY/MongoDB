@@ -77,9 +77,17 @@ newvalues = { "$set": { "name": "Minnie" } }
 x = collection.update_many(myquery, newvalues)
 ```
 - 修改資料並append到原資料
+單筆
 {'address':'S123', 'name':['test1']}
 ```
 myquery = {'address':{"$regex": "^S"}}
 newvalues = {'$push':{'name':'foo'}}
 ```
 >> {'address':'S123', 'name':['test1', 'foo']}
+多筆
+{'address':'S123', 'name':['test1']}
+```
+myquery = {'address':{"$regex": "^S"}}
+newvalues = {'$pushAll':{'name':['foo', 'bar']}}
+```
+>> {'address':'S123', 'name':['test1', 'foo', 'bar']}
