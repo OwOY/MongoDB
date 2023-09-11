@@ -29,7 +29,7 @@ DB_dict = [
 ]
 result = collection.insert_many(DB_dict)
 ```
-# Research
+## Research
 - 單筆
 ```
 finddata = collection.find({'BRAND':'APPLE'})
@@ -50,7 +50,7 @@ data = [data for data in finddata]
 for d in data:
     print(d)
 ```
-# Delete
+## Delete
 - 單筆刪除
 ```
 mvone = collection.delete_one({'title':'yaya'})
@@ -91,3 +91,53 @@ myquery = {'address':{"$regex": "^S"}}
 newvalues = {'$pushAll':{'name':['foo', 'bar']}}
 ```
 >> {'address':'S123', 'name':['test1', 'foo', 'bar']}
+## Aggregate 聚合用法
+- $lookup  
+  相似於 SQL 語法 join on  
+  from：選擇 join 的 collection  
+  localField：選擇該 collection 主鍵  
+  foreignField：選擇被連結的 collection 外鍵  
+  as：命名該物件為何  
+- $match  
+  條件式篩選  
+- $project  
+  篩選需求欄位
+- $sort  
+  依序欄位做升降冪
+- $skip  
+  跳過前幾筆資料
+- $limit  
+  選擇顯示幾筆資料
+- $count  
+  讓輸出只顯示筆數 ex : {'$count':'totalCount'}
+  >> [{'totalCount':20}]
+
+  ex：
+  ```
+  data_list = collection.aggregate([
+     {
+          '$lookup':{
+               'from':colA,
+               'localField':id,
+               'foreignField:colA_id,
+               'as':colA_info
+          }
+     },
+     {
+          '$match':{
+               {'colA_info.match_num':20},
+               {'create_at':{'$gte':time_start, '$lte':time_end}},
+               {'name':{'$regex':'mat'}
+          }
+     },
+     {
+          '$project':{
+               '_id':0, # 不顯示 _id 欄位
+               'code':1, # 只顯示code 欄位
+          }
+     },
+     {'$sort':{'createAt':-1}},
+     {'$skip':((page-1)*10)},
+     {'$limit':10},
+  ])
+  ```
